@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "UserPreference": {
+      "title": "User Preference",
+      "description": "Farmer preferences for district location, crop type, growth stage and language",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "language": { "type": "string", "maxLength": 10 },
+        "state": { "type": "string", "maxLength": 100 },
+        "district": { "type": "string", "maxLength": 100 },
+        "crop": { "type": "string", "maxLength": 50 },
+        "customCropName": { "type": "string", "maxLength": 100 },
+        "growthStage": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["userId", "language", "state", "district", "crop", "growthStage", "updatedAt"]
+    },
+    "FarmAdvisory": {
+      "title": "Farm Advisory Record",
+      "description": "Saved agro-climatic advisory record for a farmer including location, crop, advice text, source references, and weather availability status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "state": { "type": "string", "maxLength": 100 },
+        "district": { "type": "string", "maxLength": 100 },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "crop": { "type": "string", "maxLength": 50 },
+        "customCropName": { "type": "string", "maxLength": 100 },
+        "growthStage": { "type": "string", "maxLength": 50 },
+        "language": { "type": "string", "maxLength": 10 },
+        "adviceText": { "type": "string", "maxLength": 4000 },
+        "summary": { "type": "string", "maxLength": 2000 },
+        "climateRiskLevel": { "type": "string", "maxLength": 20 },
+        "recommendations": { "type": "array" },
+        "waterSavingPractices": { "type": "array" },
+        "scientificExplanation": { "type": "string", "maxLength": 2000 },
+        "uncertaintyNotes": { "type": "string", "maxLength": 2000 },
+        "sourceReferences": { "type": "string", "maxLength": 500 },
+        "weatherStatus": { "type": "string", "maxLength": 30 },
+        "weatherTemp": { "type": "number" },
+        "weatherRain": { "type": "number" },
+        "weatherCondition": { "type": "string", "maxLength": 100 }
+      },
+      "required": [
+        "id",
+        "userId",
+        "createdAt",
+        "state",
+        "district",
+        "crop",
+        "growthStage",
+        "language",
+        "adviceText",
+        "sourceReferences",
+        "weatherStatus"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/preferences/{prefId}": {
+      "schema": "UserPreference",
+      "description": "User specific agricultural preferences"
+    },
+    "/users/{userId}/advisories/{advisoryId}": {
+      "schema": "FarmAdvisory",
+      "description": "Farmer generated climate advisory records"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "AgriShield AI — Climate Early Warning for Every Farmer",
+  "description": "Climate early warning, localized weather advisories, water conservation guidance, and crop protection for Indian farmers.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
